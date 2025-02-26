@@ -3,445 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santu Saha - Professional Resume</title>
+    <title>Santu Saha - Elite Professional Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #00f7ff;
+            --secondary: #ff00ea;
+            --dark: #0a0a1f;
+            --light: #f0f0ff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: #fff;
-            line-height: 1.8;
+            background: var(--dark);
+            color: var(--light);
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Background Image Overlay */
-        body::before {
-            content: '';
+        #particles-js {
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            opacity: 0.15;
             z-index: -1;
         }
 
-        /* Navigation */
         .navbar {
             position: fixed;
             width: 100%;
-            padding: 20px 60px;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(15, 12, 41, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 31, 0.95);
+            backdrop-filter: blur(15px);
             z-index: 1000;
-            transition: all 0.5s ease;
+            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        .navbar.sticky {
-            padding: 15px 60px;
-            background: rgba(15, 12, 41, 1);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        .nav-links {
+            display: flex;
+            gap: 2rem;
         }
 
-        .navbar a {
-            color: #fff;
+        .nav-links a {
+            color: var(--light);
             text-decoration: none;
-            font-size: 18px;
-            margin: 0 25px;
-            font-weight: 500;
+            padding: 0.5rem 1rem;
             position: relative;
-            transition: all 0.3s ease;
         }
 
-        .navbar a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
             width: 0;
             height: 2px;
-            background: #00eaff;
-            bottom: -5px;
-            left: 0;
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: 0.4s;
         }
 
-        .navbar a:hover::after {
+        .nav-links a:hover::before {
             width: 100%;
         }
 
-        .navbar a:hover {
-            color: #00eaff;
-        }
-
-        /* Eye-Catching Call-to-Action Button */
         .hire-btn {
-            padding: 12px 35px;
-            background: linear-gradient(45deg, #00eaff, #ff007a);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 0.8rem 2rem;
             border-radius: 50px;
-            color: #fff;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(0, 234, 255, 0.4);
-            transition: all 0.4s ease;
-            animation: pulse 2s infinite;
+            color: var(--dark);
+            font-weight: 700;
         }
 
-        .hire-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 234, 255, 0.6);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Container */
-        .container {
-            max-width: 1300px;
-            margin: 120px auto 0;
-            padding: 0 60px;
-        }
-
-        /* Sections */
-        .section {
-            margin: 80px 0;
-            padding: 60px 0;
-            position: relative;
-            opacity: 0;
-            transform: translateY(80px);
-            transition: all 1.2s ease-out; /* Smoother transition for scrolling */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .section.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero Section */
         .hero {
-            text-align: center;
-            padding: 120px 0;
-            background: rgba(15, 12, 41, 0.6);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 15% 5%;
             position: relative;
         }
 
-        .hero::after {
-            content: url('https://cdn-icons-png.flaticon.com/512/3135/3135715.png'); /* Placeholder for a professional icon (e.g., briefcase) */
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            opacity: 0.5;
+        .hero-content {
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 64px;
-            color: #00eaff;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 234, 255, 0.5);
-            animation: slideIn 1s ease;
+            font-size: 4rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
         }
 
         .hero p {
-            font-size: 24px;
-            color: #ff007a;
-            font-weight: 300;
-            letter-spacing: 1px;
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
         }
 
-        /* Card Styling */
+        .section {
+            padding: 5rem 5%;
+            position: relative;
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
             border-radius: 20px;
-            margin: 25px 0;
+            padding: 2rem;
+            margin: 2rem 0;
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s ease;
             position: relative;
         }
 
-        .card::before {
-            content: url('https://cdn-icons-png.flaticon.com/512/1055/1055687.png'); /* Placeholder for a small icon (e.g., calculator for finance) */
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 30px;
-            opacity: 0.3;
-        }
-
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        h2 {
-            color: #00eaff;
-            margin-bottom: 30px;
-            font-size: 36px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .timeline {
             position: relative;
+            padding: 3rem 0;
         }
 
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: #ff007a;
-            bottom: -10px;
-            left: 0;
-        }
-
-        h3 {
-            color: #fff;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .contact-info a,
-        .social-links a {
-            color: #ff007a;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .contact-info a:hover,
-        .social-links a:hover {
-            color: #00eaff;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-        }
-
-        .skill-item {
-            background: linear-gradient(135deg, #ff007a, #00eaff);
-            padding: 20px;
+        .timeline-item {
+            position: relative;
+            padding: 2rem;
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
-            text-align: center;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
         }
 
-        .skill-item::before {
-            content: url('https://cdn-icons-png.flaticon.com/512/1828/1828919.png'); /* Placeholder for a skill-related icon (e.g., graph) */
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 25px;
-            opacity: 0.5;
-        }
-
-        .skill-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Break Transitions */
-        .break-transition {
-            height: 100px;
-            background: linear-gradient(to bottom, rgba(15, 12, 41, 0), rgba(15, 12, 41, 1));
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Smooth Scroll Behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .navbar {
-                padding: 15px 20px;
-                flex-direction: column;
-            }
-            .navbar a {
-                margin: 15px 0;
-            }
-            .container {
-                padding: 0 20px;
-            }
             .hero h1 {
-                font-size: 48px;
+                font-size: 2.5rem;
             }
-            .hero p {
-                font-size: 18px;
-            }
-            .section {
-                padding: 40px 0;
-            }
-            .card {
-                padding: 25px;
+            
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
+    <div id="particles-js"></div>
+    
     <nav class="navbar">
-        <div>
+        <div class="nav-links">
             <a href="#home">Home</a>
-            <a href="#contact">Contact</a>
             <a href="#experience">Experience</a>
             <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
         </div>
-        <a href="mailto:santubittusig@gmail.com" class="hire-btn">Hire Me Now</a>
+        <a href="mailto:santubittusig@gmail.com" class="hire-btn">Hire Now</a>
     </nav>
 
-    <div class="container">
-        <section id="home" class="section hero">
+    <section class="hero" id="home">
+        <div class="hero-content">
             <h1>Santu Saha</h1>
             <p>Professional Accountant | Digital Marketing Specialist | Stock Market Analyst</p>
-        </section>
+        </div>
+    </section>
 
-        <div class="break-transition"></div>
+    <section class="section" id="experience">
+        <h2>Professional Experience</h2>
+        <div class="card">
+            <h3>Accountant - LG & Associates (CA Firm)</h3>
+            <p>2022 - Present | Siliguri</p>
+            <ul>
+                <li>Handled bill entries and GST returns</li>
+                <li>Managed GST registrations</li>
+                <li>Processed income tax filings</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Accountant - Siliguri Greater Lions Eye Hospital</h3>
+            <p>2020 - 2022 | Siliguri</p>
+            <ul>
+                <li>Managed vendor payments</li>
+                <li>Handled banking transactions</li>
+                <li>Processed salary disbursements</li>
+            </ul>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>Contact Information</h2>
-            <div class="card contact-info">
-                <p><strong>Email:</strong> <a href="mailto:santubittusig@gmail.com">santubittusig@gmail.com</a></p>
-                <p><strong>Phone:</strong> +91 8900499532</p>
-                <p><strong>Location:</strong> Siliguri, West Bengal, India</p>
-                <p><strong>Availability:</strong> Open to freelance and full-time opportunities</p>
-                <p class="social-links">
-                    <a href="https://linkedin.com/in/santubittu" target="_blank">LinkedIn</a> |
-                    <a href="https://quora.com/profile/Bittu-Saha-42" target="_blank">Quora</a> |
-                    <a href="https://santubittu.medium.com" target="_blank">Medium</a>
-                </p>
-            </div>
-        </section>
-
-        <div class="break-transition"></div>
-
-        <section id="experience" class="section">
-            <h2>Professional Experience</h2>
-            <div class="card">
-                <h3>Accountant - LG & Associates (CA Firm)</h3>
-                <p><strong>Siliguri | 2022 - Present</strong></p>
-                <p>Handling bill entries, GST returns, GST registrations, and income tax filings with precision and compliance.</p>
-            </div>
-            <div class="card">
-                <h3>Accountant - Siliguri Greater Lions Eye Hospital</h3>
-                <p><strong>Siliguri | 2020 - 2022</strong></p>
-                <p>Managing vendor payments, banking transactions, salary disbursements, and expense tracking for operational efficiency.</p>
-            </div>
-            <div class="card">
-                <h3>Accountant - Advocate Firm</h3>
-                <p><strong>Siliguri | 2019 - 2020</strong></p>
-                <p>Preparing GST returns, finalizing accounts, and creating balance sheets and profit & loss statements.</p>
-            </div>
-        </section>
-
-        <div class="break-transition"></div>
-
-        <section class="section">
-            <h2>Education</h2>
-            <div class="card">
-                <h3>Bachelor of Commerce (BCOM) - IGNOU</h3>
-                <p><strong>2019 - 2022 | Siliguri</strong></p>
-                <p>Specialized in financial accounting, taxation, and business management.</p>
-                <h3>Higher Secondary Education - West Bengal Board</h3>
-                <p><strong>2017 | Commerce Stream</strong></p>
-                <p>Focused on commerce, economics, and accountancy fundamentals.</p>
-            </div>
-        </section>
-
-        <div class="break-transition"></div>
-
-        <section id="skills" class="section">
-            <h2>Professional Skills</h2>
+    <section class="section" id="skills">
+        <h2>Professional Skills</h2>
+        <div class="card">
             <div class="skills-grid">
-                <div class="skill-item">Microsoft Office Suite</div>
-                <div class="skill-item">Tally ERP 9</div>
-                <div class="skill-item">Data Scraping & Analysis</div>
-                <div class="skill-item">Digital Marketing Strategies</div>
-                <div class="skill-item">Stock Market Analysis</div>
-                <div class="skill-item">Account Finalization</div>
-                <div class="skill-item">GST Compliance</div>
-                <div class="skill-item">Financial Reporting</div>
+                <span class="skill">Microsoft Office Suite</span>
+                <span class="skill">Tally ERP 9</span>
+                <span class="skill">Data Analysis</span>
+                <span class="skill">Digital Marketing</span>
+                <span class="skill">Stock Analysis</span>
+                <span class="skill">GST Compliance</span>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="break-transition"></div>
-
-        <section id="contact" class="section">
-            <h2>Certifications</h2>
-            <div class="card">
-                <p><strong>• Fundamentals of Digital Marketing</strong> - Google Digital Garage</p>
-                <p><strong>• NISM XV Research Analysis</strong> - National Institute of Securities Markets</p>
-                <p><strong>• Domestic Data Entry Operator</strong> - NSDC Certified</p>
-                <p><strong>• Basics of Financial Markets</strong> - BSE Institute</p>
+    <section class="section" id="contact">
+        <h2>Contact Information</h2>
+        <div class="card">
+            <p><i class="fas fa-envelope"></i> santubittusig@gmail.com</p>
+            <p><i class="fas fa-phone"></i> +91 8900499532</p>
+            <p><i class="fas fa-map-marker-alt"></i> Siliguri, West Bengal</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/santubittu"><i class="fab fa-linkedin"></i></a>
+                <a href="https://quora.com/profile/Bittu-Saha-42"><i class="fab fa-quora"></i></a>
+                <a href="https://santubittu.medium.com"><i class="fab fa-medium"></i></a>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        // Scroll Animation
-        const sections = document.querySelectorAll('.section');
-        const navbar = document.querySelector('.navbar');
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#00f7ff' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: { speed: 2 }
+            },
+            interactivity: {
+                events: {
+                    onhover: { enable: true, mode: 'repulse' }
                 }
-            });
-        }, {
-            threshold: 0.2
-        });
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // Sticky Navbar
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                navbar.classList.add('sticky');
-            } else {
-                navbar.classList.remove('sticky');
             }
         });
 
-        // Smooth Scroll for Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            window.scrollY > 100 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled');
         });
     </script>
 </body>
